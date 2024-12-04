@@ -1,0 +1,88 @@
+Relatório Técnico: Transação de Controle de Linguagem (TCL) em Bancos de Dados
+1. Pesquisa sobre TCL
+Definição de TCL
+TCL (Transaction Control Language) é um subconjunto de comandos SQL responsável por gerenciar transações em bancos de dados. Sua importância reside na capacidade de controlar, confirmar ou reverter operações de banco de dados, garantindo a integridade e consistência dos dados.
+Principais Comandos TCL
+1. COMMIT
+
+Função: Confirma definitivamente todas as operações de uma transação
+Objetivo: Salvar permanentemente as alterações no banco de dados
+Exemplo: Após inserir, atualizar ou excluir registros, o COMMIT torna essas mudanças permanentes
+
+2. ROLLBACK
+
+Função: Desfaz todas as operações realizadas desde o último COMMIT
+Objetivo: Restaurar o banco de dados ao estado anterior à transação
+Exemplo: Cancelar alterações em caso de erro ou condição não desejada
+
+3. SAVEPOINT
+
+Função: Criar pontos de recuperação dentro de uma transação
+Objetivo: Permitir reversão parcial de uma transação
+Exemplo: Definir pontos intermediários para recuperação seletiva
+
+4. SET TRANSACTION
+
+Função: Definir características específicas para uma transação
+Objetivo: Configurar propriedades como isolamento e nível de acesso
+Exemplo: Definir modo somente leitura ou especificar nível de isolamento
+
+Interação com o Modelo ACID
+A TCL garante os princípios ACID:
+
+Atomicidade: Todas as operações da transação são executadas completamente ou não são executadas
+Consistência: Mantém a integridade dos dados antes e após a transação
+Isolamento: Transações não interferem umas nas outras
+Durabilidade: Alterações confirmadas são permanentes, mesmo em caso de falha do sistema
+
+2. Funcionamento de Transações
+O que é uma Transação
+Uma transação é um conjunto de operações de banco de dados tratadas como uma única unidade lógica de trabalho. Deve ser completada integralmente ou completamente revertida.
+Tratamento de Transações no MySQL
+Transação Bem-Sucedida
+
+Todas as operações são executadas com sucesso
+Alterações são permanentemente salvas
+Integridade dos dados é mantida
+
+Transação com Falha
+
+Todas as operações são automaticamente desfeitas
+Banco de dados retorna ao estado anterior
+Nenhuma alteração parcial é mantida
+
+Garantia de Integridade de Dados
+
+Usar BEGIN TRANSACTION e COMMIT
+Implementar tratamento de erros
+Utilizar SAVEPOINT para pontos de recuperação
+Definir níveis de isolamento adequados
+
+3. Estudo de Caso
+Exemplo: Sistema Bancário de Transferência
+Cenário: Transferência entre contas bancárias
+
+Débito na conta de origem
+Crédito na conta de destino
+Ambas as operações devem ser realizadas completamente
+
+Vantagens da Transação:
+
+Garantir que o valor seja subtraído de uma conta e adicionado a outra
+Impedir situações onde apenas uma operação é realizada
+Manter a consistência financeira
+
+4. Conclusão
+Importância da TCL
+
+Fundamental para manter a integridade de dados
+Essencial em sistemas que requerem precisão e confiabilidade
+
+Vantagens em Sistemas Críticos
+
+Sistemas Bancários: Garantir precisão de transações financeiras
+E-commerce: Controlar processamento de pedidos
+Sistemas de Reservas: Gerenciar disponibilidade de recursos
+Sistemas de Estoque: Manter precisão de inventário
+
+A TCL representa um mecanismo crucial para garantir que operações complexas em bancos de dados sejam realizadas de forma segura, consistente e confiável.
